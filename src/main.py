@@ -43,6 +43,8 @@ def main():
         f"resolution {resolution} @ threshold {threshold}"
     )
 
+    input("press any key to continue...")
+
 
 if __name__ == "__main__":
     main()
