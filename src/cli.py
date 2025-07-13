@@ -1,7 +1,8 @@
 import pathlib
 
 import imagesize
-import gradupe
+
+import lib
 
 
 def ask(item: str, default: str) -> str:
@@ -21,7 +22,7 @@ def main():
         if path.suffix[1:].lower() in images_exts
     ]
 
-    image_dupes = gradupe.image_dupes(image_paths, resolution, threshold)
+    image_dupes = lib.image_dupes(image_paths, resolution, threshold)
 
     for image_dupe in image_dupes:
         image1_path, image2_path = image_dupe
