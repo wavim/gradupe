@@ -44,7 +44,7 @@ def main():
         f"resolution {resolution} @ threshold {threshold}"
     )
 
-    input("press any key to continue...")
+    input("press enter to continue...")
 
 
 if __name__ == "__main__":
