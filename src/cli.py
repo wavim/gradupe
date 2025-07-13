@@ -10,8 +10,8 @@ def ask(item: str, default: str) -> str:
 
 
 def main():
-    images_path = pathlib.Path(ask("images path", "/"))
-    images_exts = ask("images exts", "jpeg|jpg|png").split("|")
+    images_path = pathlib.Path(ask("images directory", "/"))
+    images_exts = ask("image suffixes", "jpeg|jpg|png").split("|")
 
     resolution = int(ask("resolution", "9"))
     threshold = float(ask("threshold", ".08"))
