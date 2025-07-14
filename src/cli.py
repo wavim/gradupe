@@ -1,3 +1,4 @@
+import concurrent.futures as futures
 import pathlib
 
 import imagesize
@@ -9,42 +10,54 @@ def ask(item: str, default: str) -> str:
     return input(f"{item.ljust(30)} ({default.center(20)}) : ") or default
 
 
-def main():
-    images_path = pathlib.Path(ask("images directory", "/"))
-    images_exts = ask("image suffixes", "jpeg|jpg|png").split("|")
+def log(*items: str) -> None:
+    print(f"\n{'\n'.join(items)}...")
 
-    resolution = int(ask("resolution", "9"))
-    threshold = float(ask("threshold", ".08"))
+
+def dim(path: str) -> str:
+    return " x ".join(str(n).rjust(4) for n in imagesize.get(path))
+
+
+def main():
+    images_dir = pathlib.Path(ask("image directory", "/"))
+    images_ext = ask("image extension", "jpeg|jpg|png").split("|")
+    resolution = int(ask("gradient resolution", "9"))
+    threshold = float(ask("duplicate threshold", ".08"))
 
     image_paths = [
         str(path)
-        for path in images_path.iterdir()
-        if path.suffix[1:].lower() in images_exts
+        for path in images_dir.iterdir()
+        if path.suffix[1:].lower() in images_ext
     ]
 
-    image_dupes = lib.image_dupes(image_paths, resolution, threshold)
+    log("reading and preprocessing images")
 
-    for image_dupe in image_dupes:
-        image1_path, image2_path = image_dupe
-
-        image1_size, image2_size = (
-            imagesize.get(image1_path),
-            imagesize.get(image2_path),
+    with futures.ThreadPoolExecutor() as exe:
+        entries = exe.map(
+            lambda path: (path, lib.image_sobel(lib.read_image(path, resolution))),
+            image_paths,
         )
 
-        print(
-            f"{str(image1_size).ljust(15)} {image1_path}",
-            f"{str(image2_size).ljust(15)} {image2_path}",
-            sep="\n",
-            end="\n\n",
-        )
+    log("searching for duplicate images")
 
-    print(
-        f"found {len(image_dupes)} ({len(image_dupes) * 2}) dupes out of {len(image_paths)} images, "
-        f"resolution {resolution} @ threshold {threshold}"
+    dupes = lib.find_dupes(entries, resolution, threshold)
+
+    log(
+        f"{len(dupes)} dupes out of {len(image_paths)} images",
+        f"resolution {resolution} @ threshold {threshold}",
+        "press enter to reveal results",
     )
 
-    input("press enter to continue...")
+    for dupe in dupes:
+        input()
+
+        path1, path2 = dupe
+
+        print(
+            f"{dim(path1).ljust(15)} {path1}",
+            f"{dim(path2).ljust(15)} {path2}",
+            sep="\n",
+        )
 
 
 if __name__ == "__main__":
