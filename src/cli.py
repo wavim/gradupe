@@ -7,7 +7,7 @@ import lib
 
 
 def ask(item: str, default: str) -> str:
-    return input(f"{item.ljust(30)} ({default.center(20)}) : ") or default
+    return input(f"{item.ljust(25)} ({default.center(16)}) : ") or default
 
 
 def log(*items: str) -> None:
@@ -54,12 +54,14 @@ def main():
         path1, path2 = dupe
 
         print(
-            f"{dim(path1).ljust(15)} {path1}",
-            f"{dim(path2).ljust(15)} {path2}",
+            f"{dim(path1).center(17)}{path1}",
+            f"{dim(path2).center(17)}{path2}",
             sep="\n",
         )
 
-    input("press enter to quit gracefully...")
+    log("END")
+    while input("enter Q to exit gracefully... ").upper() != "Q":
+        continue
 
 
 if __name__ == "__main__":
