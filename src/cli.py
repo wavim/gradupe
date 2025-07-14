@@ -59,6 +59,8 @@ def main():
             sep="\n",
         )
 
+    input("press enter to quit gracefully...")
+
 
 if __name__ == "__main__":
     main()
