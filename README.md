@@ -1,5 +1,5 @@
 <h3 align="center">GraDupe</h3>
-<p align="center">Spatial Gradient Based Duplicate Image Detector</p>
+<p align="center">Gradient Based Duplicate Image Detector</p>
 
 ---
 
