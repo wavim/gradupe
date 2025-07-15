@@ -1,43 +1,34 @@
-import itertools as iters
-import math
-import typing as types
+from itertools import combinations
+from typing import Iterable
 
 import cv2 as cv
+import numba as nb
 import numpy as np
 
-type Image = np.ndarray
-type Sobel = tuple[np.ndarray, np.ndarray]
+type Image = np.ndarray[tuple[int, ...], np.dtype[np.uint8]]
+type Sobel = np.ndarray[tuple[int, ...], np.dtype[np.bool_]]
 
 
 def read_image(path: str, resolution: int) -> Image:
-    image = cv.imread(path, cv.IMREAD_GRAYSCALE)
-
-    return cv.resize(image, (resolution, resolution))
+    return cv.resize(cv.imread(path, cv.IMREAD_GRAYSCALE), (resolution, resolution))
 
 
-def image_sobel(image: Image) -> Sobel:
-    sobel_x, sobel_y = cv.spatialGradient(image)
-
-    return sobel_x > 0, sobel_y > 0
+def calc_sobel(image: Image) -> Sobel:
+    return np.vstack(cv.spatialGradient(image)).ravel() > 0
 
 
-def sobel_dist(sobel1: Sobel, sobel2: Sobel) -> float:
-    sobel1_x, sobel1_y = sobel1
-    sobel2_x, sobel2_y = sobel2
-
-    dist_x = (sobel1_x ^ sobel2_x).sum()
-    dist_y = (sobel1_y ^ sobel2_y).sum()
-
-    return math.hypot(dist_x, dist_y)
+@nb.njit(nb.uint8(nb.bool[:], nb.bool[:]))
+def sobel_dist(sobel1: Sobel, sobel2: Sobel) -> int:
+    return (sobel1 ^ sobel2).sum()
 
 
 def find_dupes(
-    entries: types.Iterable[tuple[str, Sobel]], resolution: int, threshold: float
+    paths: Iterable[str], sobels: Iterable[Sobel], resolution: int, threshold: float
 ) -> list[tuple[str, str]]:
-    max_dist = pow(resolution, 2) * math.sqrt(2) * threshold
+    max_dist = 2 * threshold * resolution * resolution
 
     return [
         (path1, path2)
-        for (path1, sobel1), (path2, sobel2) in iters.combinations(entries, 2)
+        for (path1, sobel1), (path2, sobel2) in combinations(zip(paths, sobels), 2)
         if sobel_dist(sobel1, sobel2) < max_dist
     ]

@@ -1,5 +1,5 @@
-import concurrent.futures as futures
-import pathlib
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 import imagesize
 
@@ -19,31 +19,31 @@ def dim(path: str) -> str:
 
 
 def main():
-    images_dir = pathlib.Path(ask("image directory", "/"))
-    images_ext = ask("image extension", "jpeg|jpg|png").split("|")
+    directory = Path(ask("image directory", "/"))
+    extensions = ask("image extension", "jpeg|jpg|png").split("|")
     resolution = int(ask("gradient resolution", "9"))
     threshold = float(ask("duplicate threshold", ".08"))
 
-    image_paths = [
+    log("reading and preprocessing")
+
+    paths = [
         str(path)
-        for path in images_dir.iterdir()
-        if path.suffix[1:].lower() in images_ext
+        for path in directory.iterdir()
+        if path.suffix[1:].lower() in extensions
     ]
 
-    log("reading and preprocessing images")
-
-    with futures.ThreadPoolExecutor() as exe:
-        entries = exe.map(
-            lambda path: (path, lib.image_sobel(lib.read_image(path, resolution))),
-            image_paths,
+    with ThreadPoolExecutor() as exe:
+        sobels = exe.map(
+            lambda path: lib.calc_sobel(lib.read_image(path, resolution)),
+            paths,
         )
 
-    log("searching for duplicate images")
+    log("searching for duplicates")
 
-    dupes = lib.find_dupes(entries, resolution, threshold)
+    dupes = lib.find_dupes(paths, sobels, resolution, threshold)
 
     log(
-        f"{len(dupes)} dupes out of {len(image_paths)} images",
+        f"{len(dupes)} dupes out of {len(paths)} images",
         f"resolution {resolution} @ threshold {threshold}",
         "press enter to reveal results",
     )
@@ -54,8 +54,8 @@ def main():
         path1, path2 = dupe
 
         print(
-            f"{dim(path1).center(17)}{path1}",
-            f"{dim(path2).center(17)}{path2}",
+            f"{dim(path1).center(15)}{path1}",
+            f"{dim(path2).center(15)}{path2}",
             sep="\n",
         )
 
