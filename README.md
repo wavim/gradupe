@@ -13,7 +13,7 @@ The "gradient resolution" is the side length in pixels to resize images for grad
 
 The "duplicate threshold" is the gradient similarity threshold for images to be considered
 duplicates.  
-($x \in \mathbb{R} \cap [0, 1] = .07$)
+($x \in \mathbb{R} \cap [0, 1] = .05$)
 
 The tool is able to find many more duplicates than e.g. iCloud Photos, tolerating differences in
 format, waterprint, brightness/hue, and crop/stretch, just to name a few.

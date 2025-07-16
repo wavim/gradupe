@@ -27,7 +27,7 @@ def main():
     directory = Path(ask("image directory", "/"))
     extensions = ask("image extension", "jpeg|jpg|png").split("|")
     resolution = int(ask("gradient resolution", "8"))
-    threshold = float(ask("duplicate threshold", ".07"))
+    threshold = float(ask("duplicate threshold", ".05"))
 
     paths = [
         str(path)
