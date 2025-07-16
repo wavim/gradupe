@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import combinations, compress
 from math import ceil
 from typing import Iterable, Sequence, cast
 
@@ -36,8 +36,11 @@ def calc_dmask(stack: Stack, threshold: int) -> DMask:
 
 def find_dupes(
     paths: Iterable[str], sobels: Sequence[Sobel], resolution: int, threshold: float
-) -> list[tuple[str, str]]:
+) -> Iterable[tuple[str, str]]:
+    if len(sobels) < 2:
+        return []
+
     stack = cast(Stack, np.stack(sobels))
     dmask = calc_dmask(stack, ceil(2 * resolution * resolution * threshold))
 
-    return [pair for pair, mask in zip(combinations(paths, 2), dmask) if mask]
+    return compress(combinations(paths, 2), dmask)
