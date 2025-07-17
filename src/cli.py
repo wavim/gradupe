@@ -26,8 +26,12 @@ def dim(path: str) -> str:
 def main():
     directory = Path(ask("image directory", "/"))
     extensions = ask("image extension", "jpeg|jpg|png").split("|")
+
     resolution = int(ask("gradient resolution", "8"))
+    assert 1 <= resolution <= 11, "resolution must be in [1, 11]"
+
     threshold = float(ask("duplicate threshold", ".05"))
+    assert 0 <= threshold <= 1, "threshold must be in [0, 1]"
 
     paths = [
         str(path)

@@ -9,7 +9,7 @@ Built with OpenCV, NumPy, and Numba.
 To use the CLI tool, run the prebuilt binary and follow the input prompts.
 
 The "gradient resolution" is the side length in pixels to resize images for gradient computations.  
-($x \in \mathbb{Z} \cap [1, 15] = 8$)
+($x \in \mathbb{Z} \cap [1, 11] = 8$)
 
 The "duplicate threshold" is the gradient similarity threshold for images to be considered
 duplicates.  
