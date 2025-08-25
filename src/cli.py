@@ -7,12 +7,12 @@ import imagesize
 import lib
 
 
-def ask(item: str, default: str) -> str:
-    return input(f"{item.ljust(25)} ({default.center(16)}) : ") or default
-
-
 def log(*items: str) -> None:
     print(f"\n{'\n'.join(items)}...", flush=True)
+
+
+def ask(item: str, default: str) -> str:
+    return input(f"{item.ljust(25)} ({default.center(16)}) : ") or default
 
 
 def num(name: str, items: list[Any]) -> str:

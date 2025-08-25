@@ -1,0 +1,6 @@
+imagesize
+numba
+numpy
+opencv-python
+pyinstaller
+tbb
