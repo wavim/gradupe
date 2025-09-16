@@ -1,6 +1,6 @@
 imagesize
 numba
 numpy
-opencv-python
-pyinstaller
+opencv-python-headless
 tbb
+typer-slim

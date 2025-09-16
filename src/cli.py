@@ -1,80 +1,61 @@
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import Any
+from typing import Annotated, Any
 
 import imagesize
+from rich import print
+from rich.progress import Progress, TextColumn, TimeElapsedColumn
+from typer import Option, run
 
-import lib
-
-
-def log(*items: str) -> None:
-    print(f"\n{'\n'.join(items)}...", flush=True)
-
-
-def ask(item: str, default: str) -> str:
-    return input(f"{item.ljust(25)} ({default.center(16)}) : ") or default
+from lib import find_dupes, calc_sobel, read_image
 
 
 def num(name: str, items: list[Any]) -> str:
-    return f"{len(items)} {name}{'s' if len(items) > 1 else ''}"
+    return f"{len(items)} {name}{'s' if len(items) != 1 else ''}"
 
 
 def dim(path: str) -> str:
-    return " x ".join(str(n).rjust(4) for n in imagesize.get(path))
+    return " x ".join(str(x).rjust(4) for x in imagesize.get(path))
 
 
-def main():
-    image_directory = Path(ask("image directory", "/"))
-    image_extension = ask("image extension", "jpeg|jpg|png").split("|")
-
+def main(
+    path: str = ".",
+    glob: str = "*",
+    r: Annotated[int, Option(help="Gradient resolution.", min=1, max=11)] = 8,
+    t: Annotated[int, Option(help="Duplicate threshold.", min=0, max=99)] = 5,
+):
+    print()
     paths = [
-        str(path)
-        for path in image_directory.iterdir()
-        if path.suffix[1:].lower() in image_extension
+        str(img)
+        for img in Path(path).glob(glob)
+        if img.suffix.lower() in (".bmp", ".jpeg", ".jpg", ".png")
     ]
 
-    resolution = int(ask("gradient resolution", "8"))
-    assert 1 <= resolution <= 11, "resolution must be in [1, 11]"
+    with Progress(
+        TextColumn("{task.description}"), TimeElapsedColumn()
+    ) as p, ThreadPoolExecutor() as pool:
+        p.add_task("reading and convoluting images")
 
-    threshold = float(ask("duplicate threshold", ".05"))
-    assert 0 <= threshold <= 1, "threshold must be in [0, 1]"
-
-    log("reading and convoluting images")
-
-    with ThreadPoolExecutor() as exe:
-        sobels_it = exe.map(
-            lambda path: lib.calc_sobel(lib.read_image(path, resolution)),
-            paths,
-        )
+        sobels_it = pool.map(lambda img: calc_sobel(read_image(img, r)), paths)
 
     sobels = list(sobels_it)
 
-    log("searching for duplicate images")
+    with Progress(TextColumn("{task.description}"), TimeElapsedColumn()) as p:
+        p.add_task("diffing and checking duplicate")
 
-    dupes = list(lib.find_dupes(paths, sobels, resolution, threshold))
+        dupes = list(find_dupes(paths, sobels, r, t / 100))
 
-    log(
-        f"{num("dupe pair", dupes)} in {num("image", paths)}",
-        f"resolution {resolution} @ threshold {threshold}",
-        "press enter to reveal results",
-    )
+    print()
+    print(f"found {num("dupe pair", dupes)} in {num("image", paths)}")
 
-    for dupe in dupes:
+    for path1, path2 in dupes:
         input()
+        print(f" {dim(path1)}\t{path1}\n {dim(path2)}\t{path2}")
 
-        path1, path2 = dupe
-
-        print(
-            f"{dim(path1).center(17)}   {path1}",
-            f"{dim(path2).center(17)}   {path2}",
-            sep="\n",
-        )
-
-    log("END")
-
-    while input("enter Q to exit gracefully... ").upper() != "Q":
+    print()
+    while input("enter Q to quit gracefully... ").upper() != "Q":
         continue
 
 
 if __name__ == "__main__":
-    main()
+    run(main)
