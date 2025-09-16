@@ -20,7 +20,7 @@ def calc_sobel(image: Image) -> Sobel:
     return np.vstack(cv.spatialGradient(image)).ravel() > 0  # type: ignore
 
 
-@nb.njit(nb.bool[:](nb.bool[:, :], nb.uint8), parallel=True)
+@nb.njit(nb.bool[:](nb.bool[:, :], nb.uint8), parallel=True, cache=True)
 def calc_dmask(stack: Stack, threshold: int) -> DMask:
     n = len(stack)
     d = np.empty(n * (n - 1) // 2, dtype=np.uint8)
