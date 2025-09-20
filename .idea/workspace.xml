@@ -7,6 +7,7 @@
     <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="chore: edit description">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

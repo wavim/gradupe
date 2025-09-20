@@ -2,6 +2,9 @@
 requires = ["flit_core >=3.11,<4"]
 build-backend = "flit_core.buildapi"
 
+[tool.flit.sdist]
+exclude = [".*/"]
+
 [project]
 name = "gradupe"
 authors = [{ name = "David", email = "wavim.wu@gmail.com" }]
