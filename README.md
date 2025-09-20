@@ -1,5 +1,5 @@
 <h3 align="center">GraDupe</h3>
-<p align="center">Sobel Gradient Based Image Deduper</p>
+<p align="center">Sobel Gradient Image Deduplication</p>
 
 ### Motivation
 
