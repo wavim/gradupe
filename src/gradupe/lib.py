@@ -1,5 +1,4 @@
 from itertools import combinations, compress
-from math import ceil
 from typing import Iterable, Sequence, cast
 
 import cv2 as cv
@@ -12,8 +11,8 @@ type Stack = np.ndarray[tuple[int, int], np.dtype[np.bool_]]
 type DMask = np.ndarray[tuple[int], np.dtype[np.bool_]]
 
 
-def read_image(path: str, resolution: int) -> Image:
-    return cv.resize(cv.imread(path, cv.IMREAD_GRAYSCALE), (resolution, resolution))
+def read_image(path: str, side: int) -> Image:
+    return cv.resize(cv.imread(path, cv.IMREAD_GRAYSCALE), (side, side))
 
 
 def calc_sobel(image: Image) -> Sobel:
@@ -23,7 +22,7 @@ def calc_sobel(image: Image) -> Sobel:
 @nb.njit(nb.bool[:](nb.bool[:, :], nb.uint8), parallel=True, cache=True)
 def calc_dmask(stack: Stack, threshold: int) -> DMask:
     n = len(stack)
-    d = np.empty(n * (n - 1) // 2, dtype=np.uint8)
+    d = np.empty((n - 1) * n // 2, dtype=np.uint8)
 
     for i in nb.prange(n - 1):
         t = i * (2 * n - i - 3) // 2 - 1
@@ -35,12 +34,12 @@ def calc_dmask(stack: Stack, threshold: int) -> DMask:
 
 
 def find_dupes(
-    paths: Iterable[str], sobels: Sequence[Sobel], resolution: int, threshold: float
+    paths: Iterable[str], sobels: Sequence[Sobel], side: int, threshold: int
 ) -> Iterable[tuple[str, str]]:
     if len(sobels) < 2:
         return []
 
     stack = cast(Stack, np.stack(sobels))
-    dmask = calc_dmask(stack, ceil(2 * resolution * resolution * threshold))
+    dmask = calc_dmask(stack, 2 * side * side * threshold // 100)
 
     return compress(combinations(paths, 2), dmask)
