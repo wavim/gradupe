@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Annotated, Any
 
 from imagesize import get
+from numba import threading_layer
 from rich import print
 from rich.progress import Progress, TextColumn, TimeElapsedColumn
 from typer import Option
@@ -33,22 +34,23 @@ def main(
     ]
 
     with (
-        Progress(TextColumn("{task.description}"), TimeElapsedColumn()) as p,
+        Progress(TextColumn("{task.description}:"), TimeElapsedColumn()) as p,
         ThreadPoolExecutor() as pool,
     ):
-        p.add_task("reading and convoluting images")
+        p.add_task("Reading and convoluting images")
 
         sobels_it = pool.map(lambda img: calc_sobel(read_image(img, r)), paths)
 
     sobels = list(sobels_it)
 
-    with Progress(TextColumn("{task.description}"), TimeElapsedColumn()) as p:
-        p.add_task("diffing and finding duplicates")
+    with Progress(TextColumn("{task.description}:"), TimeElapsedColumn()) as p:
+        p.add_task("Diffing and finding duplicates")
 
         dupe = list(find_dupes(paths, sobels, r, t))
 
     print()
-    print(f"found {num("dupe pair", dupe)} in {num("image", paths)}")
+    print(f"Numba using threading layer {threading_layer().upper()}")
+    print(f"Found {num("dupe pair", dupe)} in {num("image", paths)}")
 
     for path1, path2 in dupe:
         input()
