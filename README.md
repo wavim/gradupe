@@ -38,15 +38,11 @@ list of duplicate images with the specified threshold.
 
 ### Implementation
 
-The library and CLI are written in Python using OpenCV, NumPy, and Numba (LLVM
-JIT).
+The library is written in Python using OpenCV, NumPy, and Numba (LLVM JIT). The
+CLI is written with Rich and Typer.
 
-- gradient resolution: grid side length in pixels to resize images for gradient
-  computations  
-   ($\mathbb{Z} \cap [1, 11] = 8$)
-- duplicate threshold: gradient similarity threshold for images to be considered
-  duplicates  
-   ($\mathbb{R} \cap [0, 1] = .05$)
+Install the CLI tool with `pip install gradupe`. Refer to `gradupe --help` for
+usage instructions.
 
 In practice, the tool proves extremely efficient and accurate. It finishes
 comparing 2000+ images in under 0.1 seconds on my Intel(R) Core(TM) i5-11320H

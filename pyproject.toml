@@ -4,12 +4,12 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "gradupe"
-authors = [{ name = "David Wu", email = "wavim.wu@gmail.com" }]
+authors = [{ name = "David", email = "wavim.wu@gmail.com" }]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 dynamic = ["version", "description"]
-keywords = ["images", "sobel", "gradient", "deduper"]
+keywords = ["image-dedupe", "sobel-gradient"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
