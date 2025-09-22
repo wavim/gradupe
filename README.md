@@ -1,4 +1,8 @@
-<h3 align="center">GraDupe</h3>
+<h3 align="center">
+    <img src="https://raw.githubusercontent.com/wavim/gradupe/master/.media/icon.png" width="125" alt="GraDupe Icon" />
+    <br /><br />
+    GraDupe
+</h3>
 <p align="center">Sobel Gradient Image Deduplication</p>
 
 ### Motivation
