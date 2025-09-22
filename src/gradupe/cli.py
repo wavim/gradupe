@@ -43,13 +43,17 @@ def main(
 
     sobels = list(sobels_it)
 
+    print()
+    print(f"Numba uses threading layer [blue]{threading_layer().upper()}[/blue]")
+    print("[blue]TBB[/blue] offers the max performance")
+    print()
+
     with Progress(TextColumn("{task.description}:"), TimeElapsedColumn()) as p:
         p.add_task("Diffing and finding duplicates")
 
         dupe = list(find_dupes(paths, sobels, r, t))
 
     print()
-    print(f"Numba using threading layer {threading_layer().upper()}")
     print(f"Found {num("dupe pair", dupe)} in {num("image", paths)}")
 
     for path1, path2 in dupe:
