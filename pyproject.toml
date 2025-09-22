@@ -16,15 +16,13 @@ keywords = ["image-dedupe", "sobel-gradient"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Science/Research",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Image Processing",
     "Typing :: Typed",
-    "Intended Audience :: Developers",
-    "Intended Audience :: End Users/Desktop",
-    "Intended Audience :: Information Technology",
-    "Intended Audience :: Science/Research"
 ]
 requires-python = ">=3.10"
 dependencies = [
@@ -40,7 +38,7 @@ dependencies = [
 gradupe = "gradupe.__main__:cli"
 
 [project.urls]
-Home = "https://github.com/wavim/gradupe"
-Repository = "https://github.com/wavim/gradupe"
 Documentation = "https://github.com/wavim/gradupe#readme"
+Home = "https://github.com/wavim/gradupe"
 Issues = "https://github.com/wavim/gradupe/issues"
+Repository = "https://github.com/wavim/gradupe"
