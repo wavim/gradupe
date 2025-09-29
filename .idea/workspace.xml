@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="chore: cleanup project">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="chore: return repo link + misc">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +124,7 @@
       <workItem from="1758554713562" duration="1507000" />
       <workItem from="1759136362288" duration="276000" />
       <workItem from="1759136678555" duration="5555000" />
-      <workItem from="1759146082803" duration="2933000" />
+      <workItem from="1759146082803" duration="3459000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -320,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759148673081</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="chore: return repo link + misc">
+      <option name="closed" value="true" />
+      <created>1759149065217</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1759149065217</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +354,8 @@
     <MESSAGE value="build: v2.2.4 trusted" />
     <MESSAGE value="fix: try to fix pypi tp" />
     <MESSAGE value="chore: cleanup project" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: cleanup project" />
+    <MESSAGE value="chore: return repo link + misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: return repo link + misc" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1758542963061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
