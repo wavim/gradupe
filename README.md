@@ -1,5 +1,5 @@
 <h3 align="center">
-    <img src="https://raw.githubusercontent.com/wavim/gradupe/master/.media/icon.png" width="150" alt="GraDupe Icon" />
+    <img src="https://raw.githubusercontent.com/wavim/gradupe/master/.media/icon.png" width="140" alt="GraDupe Icon" />
     <br />
     GraDupe
 </h3>
