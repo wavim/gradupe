@@ -1,0 +1,28 @@
+name: Flit Publish
+
+on:
+  release:
+    types: [ published ]
+
+permissions:
+  contents: read
+
+jobs:
+  flit-pypi:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.x
+
+      - name: Publish
+        run: |
+          pip install flit
+          flit publish
+        env:
+          FLIT_INDEX_URL: https://upload.pypi.org/legacy/
+          FLIT_USERNAME: __token__
+          FLIT_PASSWORD: ${{ secrets.PYPI_TOKEN }}
