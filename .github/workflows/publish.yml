@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   flit-pypi:
+    environment: release
     runs-on: ubuntu-latest
 
     steps:
