@@ -4,8 +4,7 @@ from typing import Annotated, Any
 
 from imagesize import get
 from numba import threading_layer
-from rich import print
-from rich.progress import Progress, TextColumn, TimeElapsedColumn
+from rich import print, progress
 from typer import Option
 
 from .lib import find_dupes, calc_sobel, read_image
@@ -28,27 +27,31 @@ def main(
     print()
 
     paths = [
-        str(img)
-        for img in Path(path).glob(glob)
-        if img.suffix.lower() in (".bmp", ".jpeg", ".jpg", ".png")
+        str(file)
+        for file in Path(path).glob(glob)
+        if file.suffix.lower() in (".bmp", ".jpeg", ".jpg", ".png")
     ]
 
     with (
-        Progress(TextColumn("{task.description}:"), TimeElapsedColumn()) as p,
+        progress.Progress(
+            progress.TextColumn("{task.description}"), progress.TimeElapsedColumn()
+        ) as preliminary,
         ThreadPoolExecutor() as pool,
     ):
-        p.add_task("Reading and convoluting images")
+        preliminary.add_task("Reading and convoluting images")
 
         sobels_it = pool.map(lambda img: calc_sobel(read_image(img, r)), paths)
 
     sobels = list(sobels_it)
 
     print()
-    print(f"Numba uses threading layer [blue]{threading_layer().upper()}[/blue]")
-    print("[blue]TBB[/blue] offers the max performance")
+    print(f"Numba uses threading layer [bold cyan]{threading_layer().upper()}")
+    print("[bold cyan]TBB[/] offers maximum performance")
     print()
 
-    with Progress(TextColumn("{task.description}:"), TimeElapsedColumn()) as p:
+    with progress.Progress(
+        progress.TextColumn("{task.description}"), progress.TimeElapsedColumn()
+    ) as p:
         p.add_task("Diffing and finding duplicates")
 
         dupe = list(find_dupes(paths, sobels, r, t))
@@ -56,8 +59,6 @@ def main(
     print()
     print(f"Found {num("dupe pair", dupe)} in {num("image", paths)}")
 
-    for path1, path2 in dupe:
+    for file1, file2 in dupe:
         input()
-        print(f" {dim(path1)}\t{path1}\n {dim(path2)}\t{path2}")
-
-    input()
+        print(f" {dim(file1)}\t{file1}\n {dim(file2)}\t{file2}")
