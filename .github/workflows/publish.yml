@@ -9,8 +9,11 @@ permissions:
 
 jobs:
   flit-pypi:
-    environment: release
     runs-on: ubuntu-latest
+
+    environment: release
+    permissions:
+      id-token: write
 
     steps:
       - uses: actions/checkout@v5

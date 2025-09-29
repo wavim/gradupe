@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="build: use gh env">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="build: v2.2.4 trusted">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
     </list>
@@ -124,7 +125,7 @@
       <workItem from="1758554713562" duration="1507000" />
       <workItem from="1759136362288" duration="276000" />
       <workItem from="1759136678555" duration="5555000" />
-      <workItem from="1759146082803" duration="23000" />
+      <workItem from="1759146082803" duration="893000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -286,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759145973789</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="build: v2.2.4 trusted">
+      <option name="closed" value="true" />
+      <created>1759146150008</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1759146150008</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +320,8 @@
     <MESSAGE value="docs: larger icon" />
     <MESSAGE value="build: gh workflow" />
     <MESSAGE value="build: use gh env" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: use gh env" />
+    <MESSAGE value="build: v2.2.4 trusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: v2.2.4 trusted" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1758542963061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
