@@ -40,9 +40,3 @@ email = "wavim.wu@gmail.com"
 
 [project.scripts]
 gradupe = "gradupe.__main__:cli"
-
-[project.urls]
-Documentation = "https://github.com/wavim/gradupe#readme"
-Home = "https://github.com/wavim/gradupe"
-Issues = "https://github.com/wavim/gradupe/issues"
-Repository = "https://github.com/wavim/gradupe"
