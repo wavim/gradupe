@@ -38,8 +38,7 @@ def main(
 
         with ThreadPoolExecutor() as pool:
             sobels_it = pool.map(lambda i: calc_sobel(read_image(i, r)), paths)
-
-    sobels = list(sobels_it)
+        sobels = list(sobels_it)
 
     print()
     print(f"Numba uses threading layer [bold cyan]{threading_layer().upper()}")

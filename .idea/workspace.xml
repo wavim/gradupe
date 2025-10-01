@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="build: ignore tag push">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="docs: clarify tbb not mandatory + misc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +129,7 @@
       <workItem from="1759136678555" duration="5555000" />
       <workItem from="1759146082803" duration="3657000" />
       <workItem from="1759295483810" duration="25000" />
-      <workItem from="1759298821341" duration="2420000" />
+      <workItem from="1759298821341" duration="3496000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -337,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759149609186</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="docs: clarify tbb not mandatory + misc">
+      <option name="closed" value="true" />
+      <created>1759301375246</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1759301375246</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +377,8 @@
     <MESSAGE value="chore: cleanup project" />
     <MESSAGE value="chore: return repo link + misc" />
     <MESSAGE value="build: ignore tag push" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: ignore tag push" />
+    <MESSAGE value="docs: clarify tbb not mandatory + misc" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: clarify tbb not mandatory + misc" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1758542963061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
