@@ -45,17 +45,17 @@ list of duplicate images with the specified threshold.
 The tool is written in pure Python. The library used
 [OpenCV](https://opencv.org/), [NumPy](https://numpy.org/), and
 [Numba](https://numba.pydata.org/) (LLVM JIT). The CLI used
-[Rich](https://github.com/Textualize/rich) and
-[Typer](https://github.com/fastapi/typer).
+[Typer](https://github.com/fastapi/typer) and
+[Rich](https://github.com/Textualize/rich).
 
 Get the CLI with `pip install gradupe`, refer to `gradupe --help` for usage
-instructions. For maximum performance, install Intel's TBB (Threading Building
-Blocks) libraries on your device to enable dynamic scheduling (computational
-load of distance matrix is imbalanced). Run `numba -s | grep TBB` to check TBB
-presence, refer to
+instructions. Optionally, install Intel's TBB (Threading Building Blocks)
+libraries on your device to enable dynamic scheduling (computational load of
+distance matrix is imbalanced). Run `numba -s | grep TBB` to check TBB presence,
+refer to
 [instructions](https://numba.readthedocs.io/en/stable/user/threading-layer.html#which-threading-layers-are-available)
 if TBB is not found.
 
 In practice, the tool proves extremely efficient and accurate. It finishes
-comparing 2000+ images in under 0.1 seconds on my Intel(R) Core(TM) i5-11320H
-laptop and caught 100+ duplicate pairs that iCloud Photos failed to detect.
+comparing 2000 images in under 0.1 seconds on my Intel(R) Core(TM) i5-11320H
+laptop and caught 100 duplicate pairs that iCloud Photos failed to detect.

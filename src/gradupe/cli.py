@@ -4,7 +4,8 @@ from typing import Annotated, Any
 
 from imagesize import get
 from numba import threading_layer
-from rich import print, progress
+from rich import print
+from rich.progress import Progress, TextColumn, TimeElapsedColumn
 from typer import Option
 
 from .lib import find_dupes, calc_sobel, read_image
@@ -32,15 +33,11 @@ def main(
         if file.suffix.lower() in (".bmp", ".jpeg", ".jpg", ".png")
     ]
 
-    with (
-        progress.Progress(
-            progress.TextColumn("{task.description}"), progress.TimeElapsedColumn()
-        ) as preliminary,
-        ThreadPoolExecutor() as pool,
-    ):
-        preliminary.add_task("Reading and convoluting images")
+    with Progress(TextColumn("{task.description}"), TimeElapsedColumn()) as p:
+        p.add_task("Reading and convoluting images")
 
-        sobels_it = pool.map(lambda img: calc_sobel(read_image(img, r)), paths)
+        with ThreadPoolExecutor() as pool:
+            sobels_it = pool.map(lambda i: calc_sobel(read_image(i, r)), paths)
 
     sobels = list(sobels_it)
 
@@ -49,9 +46,7 @@ def main(
     print("[bold cyan]TBB[/] offers maximum performance")
     print()
 
-    with progress.Progress(
-        progress.TextColumn("{task.description}"), progress.TimeElapsedColumn()
-    ) as p:
+    with Progress(TextColumn("{task.description}"), TimeElapsedColumn()) as p:
         p.add_task("Diffing and finding duplicates")
 
         dupe = list(find_dupes(paths, sobels, r, t))
@@ -61,4 +56,5 @@ def main(
 
     for file1, file2 in dupe:
         input()
-        print(f" {dim(file1)}\t{file1}\n {dim(file2)}\t{file2}")
+        print(f" {dim(file1)}\t{file1}")
+        print(f" {dim(file2)}\t{file2}")
