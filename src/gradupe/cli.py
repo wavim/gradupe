@@ -11,7 +11,7 @@ from typer import Option, Typer, rich_utils
 from .lib import calc_sobel, find_dupes, read_image
 
 rich_utils.STYLE_HELPTEXT = ""
-cli = Typer(add_completion=False, rich_markup_mode="rich")
+app = Typer(add_completion=False, rich_markup_mode="rich")
 
 
 def num(name: str, items: list[Any]) -> str:
@@ -22,7 +22,7 @@ def dim(path: str) -> str:
     return " x ".join(str(x).rjust(4) for x in get(path))
 
 
-@cli.command()
+@app.command()
 def main(
     path: str = ".",
     glob: str = "*",

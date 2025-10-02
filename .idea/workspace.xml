@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="fix: compat utf heart">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="fix: disable dim docstring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gradupe/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +95,11 @@
       <recent name="C:\Users\wavim\Code\gradupe\src\gradupe" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="pip install gradupe" />
+    </option>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -130,7 +139,8 @@
       <workItem from="1759398395169" duration="3986000" />
       <workItem from="1759402435445" duration="1408000" />
       <workItem from="1759407084724" duration="29000" />
-      <workItem from="1759410765658" duration="1768000" />
+      <workItem from="1759410765658" duration="1867000" />
+      <workItem from="1759412814125" duration="1207000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -372,14 +382,21 @@
       <option name="project" value="LOCAL" />
       <updated>1759406179427</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fix: disable dim docstring">
+      <option name="closed" value="true" />
+      <created>1759412572796</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1759412572796</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chore: ready for main repo" />
     <MESSAGE value="feat: log numba threading layer used" />
     <MESSAGE value="chore: edit description" />
     <MESSAGE value="build: ignore dotfiles in sdist" />
@@ -404,7 +421,8 @@
     <MESSAGE value="style: cleanup and minor edits" />
     <MESSAGE value="feat: typer usage changes + docstring" />
     <MESSAGE value="fix: compat utf heart" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: compat utf heart" />
+    <MESSAGE value="fix: disable dim docstring" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: disable dim docstring" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1758542963061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
