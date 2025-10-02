@@ -31,7 +31,7 @@ def main(
     """
     [cyan]Sobel Gradient Image Deduplication
 
-    Built with [red]:heart:[/] wavim@GitHub #GraDupe
+    Built with [red]♥[/] wavim@GitHub #GraDupe
     """
 
     print()

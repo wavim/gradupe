@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="style: cleanup and minor edits">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="feat: typer usage changes + docstring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +128,7 @@
       <workItem from="1759295483810" duration="25000" />
       <workItem from="1759298821341" duration="3697000" />
       <workItem from="1759398395169" duration="3986000" />
-      <workItem from="1759402435445" duration="156000" />
+      <workItem from="1759402435445" duration="859000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -357,14 +354,21 @@
       <option name="project" value="LOCAL" />
       <updated>1759302425477</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feat: typer usage changes + docstring">
+      <option name="closed" value="true" />
+      <created>1759402665291</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1759402665291</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: rework cli with typer" />
     <MESSAGE value="chore: update gitignore" />
     <MESSAGE value="chore: ready for main repo" />
     <MESSAGE value="feat: log numba threading layer used" />
@@ -389,7 +393,8 @@
     <MESSAGE value="build: ignore tag push" />
     <MESSAGE value="docs: clarify tbb not mandatory + misc" />
     <MESSAGE value="style: cleanup and minor edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: cleanup and minor edits" />
+    <MESSAGE value="feat: typer usage changes + docstring" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: typer usage changes + docstring" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1758542963061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
