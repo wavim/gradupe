@@ -6,11 +6,12 @@ from imagesize import get
 from numba import threading_layer
 from rich import print
 from rich.progress import Progress, TextColumn, TimeElapsedColumn
-from typer import Option, Typer
+from typer import Option, Typer, rich_utils
 
-from .lib import find_dupes, calc_sobel, read_image
+from .lib import calc_sobel, find_dupes, read_image
 
-cli = Typer(rich_markup_mode="rich", add_completion=False)
+rich_utils.STYLE_HELPTEXT = ""
+cli = Typer(add_completion=False, rich_markup_mode="rich")
 
 
 def num(name: str, items: list[Any]) -> str:
@@ -31,9 +32,8 @@ def main(
     """
     [cyan]Sobel Gradient Image Deduplication
 
-    Built with [red]♥[/] wavim@GitHub #GraDupe
+    Built with [bright_red]♥[/] wavim@GitHub [cyan]#GraDupe
     """
-
     print()
 
     paths = [
