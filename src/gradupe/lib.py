@@ -1,5 +1,5 @@
 from itertools import combinations, compress
-from typing import Iterable, Sequence, cast
+from typing import Iterable, Sequence
 
 import cv2 as cv
 import numba as nb
@@ -39,7 +39,7 @@ def find_dupes(
     if len(sobels) < 2:
         return []
 
-    stack = cast(Stack, np.stack(sobels))
+    stack: Stack = np.stack(sobels)
     dmask = calc_dmask(stack, 2 * side * side * threshold // 100)
 
     return compress(combinations(paths, 2), dmask)
