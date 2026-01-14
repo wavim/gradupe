@@ -1,3 +1,3 @@
 """Sobel Gradient Image Deduplication"""
 
-__version__ = "2.2.13"
+__version__ = "3.0.0-dev"

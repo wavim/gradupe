@@ -1,5 +1,5 @@
 [build-system]
-requires = ["flit_core >=3.11,<4"]
+requires = ["flit_core >=3.12,<4.0"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.sdist]
@@ -26,11 +26,10 @@ classifiers = [
     "Typing :: Typed"
 ]
 dependencies = [
-    "imagesize >=1.4.1",
-    "numba >=0.62.1",
-    "numpy >=2.2.0,<2.3.0", # opencv maximum
+    "numba >=0.63.1",
+    "numpy >=2.2.6,<2.3.0",
     "opencv-python-headless >=4.12.0,<5.0.0",
-    "typer >=0.19.2,<0.20.0"  # pre1.x major
+    "typer >=0.21.1,<0.22.0"
 ]
 requires-python = ">=3.10"
 
