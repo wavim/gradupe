@@ -1,4 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
+from os import remove
 from pathlib import Path
 from sqlite3 import connect
 from typing import Annotated
@@ -25,8 +26,11 @@ def init(
         int, Option("--sobel-res", "-sr", help="Sobel resolution", min=1, max=11)
     ] = 8,
 ):
+    try:
+        remove(".gradupe")
+    except OSError:
+        pass
     with connect(".gradupe") as sql:
-        sql.execute("DROP TABLE IF EXISTS CACHE")
         sql.execute("""
                     CREATE TABLE CACHE
                     (
