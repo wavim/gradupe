@@ -11,10 +11,6 @@ type Stack = np.ndarray[tuple[int, int], np.dtype[np.bool_]]
 type DMask = np.ndarray[tuple[int], np.dtype[np.bool_]]
 
 
-def read_image(path: str, side: int) -> Image:
-    return cv.resize(cv.imread(path, cv.IMREAD_GRAYSCALE), (side, side))
-
-
 def calc_sobel(image: Image) -> Sobel:
     return np.vstack(cv.spatialGradient(image)).ravel() > 0  # type: ignore
 
