@@ -45,11 +45,11 @@ def init(
 
             return x, y, path, calc_sobel(grid).tobytes()
 
-        imgs = [
+        images = (
             str(path) for path in Path(".").iterdir() if cv.haveImageReader(str(path))
-        ]
+        )
         with ThreadPoolExecutor() as exe:
-            cache = list(exe.map(compute, imgs))
+            cache = exe.map(compute, images)
 
         sql.executemany(f"INSERT INTO CACHE VALUES ({sobel_res}, ?, ?, ?, ?)", cache)
         sql.commit()
