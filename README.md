@@ -7,6 +7,7 @@
 ### Usage
 
 Get the CLI tool with `pip install -U gradupe`, or retrieve from PyPI manually.
+It is recommended to run the CLI with admin privilege.
 
 `gradupe init` initializes cache in the current directory for long-term
 management.  
