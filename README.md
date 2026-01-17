@@ -4,14 +4,24 @@
 </h3>
 <p align="center">Sobel Gradient Image Deduplication</p>
 
-### Motivation
+### Usage
+
+Get the CLI tool with `pip install -U gradupe`, or retrieve from PyPI manually.
+
+`gradupe init` initializes cache in the current directory for long-term
+management.  
+`gradupe scan` scans the current directory for duplicates, utilizing cache if
+available.
+
+For further information and options, refer to `gradupe` and
+`gradupe [command] --help`.
+
+### Motive
 
 Classical algorithms based on image hashes can be inaccurate. Innovative ones
 based on RNNs can be inefficient. As the demand for image storage increases
 rapidly over the decade, we need a prompt solution that combines the benefits of
 both.
-
-### Solution
 
 At one point, Sobel gradients occurred to me as a decent fingerprint for an
 image. Similar to finite differences and derivatives, two distinct images bear
@@ -37,24 +47,16 @@ enabling parallel computation.
 The single flat distance array can be thresholded into a boolean mask with SIMD
 instructions. All that remains is to compress the image combinations with the
 mask (combinatorial indexing ensures correct correspondence), resulting in a
-list of duplicate images with the specified threshold.
+list of duplicate pairs which is then merged into groups via union find.
 
-### Implementation
+### Credits
 
-The tool is written in pure Python. The internal library used
-[OpenCV](https://opencv.org/), [NumPy](https://numpy.org/), and
-[Numba](https://numba.pydata.org/) (LLVM JIT). The CLI is built with
-[Typer](https://github.com/fastapi/typer) and
-[Rich](https://github.com/Textualize/rich).
+Library  
+[OpenCV](https://opencv.org), [NumPy](https://numpy.org),
+[Numba](https://numba.pydata.org)
 
-Get the CLI with `pip install gradupe`, refer to `gradupe --help` for usage
-instructions. Optionally, install Intel's TBB (Threading Building Blocks)
-libraries on your device to enable dynamic scheduling (computational load of
-distance matrix is imbalanced). Run `numba -s | grep TBB` to check TBB presence,
-refer to
-[instructions](https://numba.readthedocs.io/en/stable/user/threading-layer.html#which-threading-layers-are-available)
-if TBB is not found.
+Cache  
+[SQLite](https://sqlite.org)
 
-In practice, the tool proves extremely efficient and accurate. It finishes
-comparing 2000 images in under 0.1 seconds on my Intel(R) Core(TM) i5-11320H
-laptop and found 100 duplicate pairs that iCloud Photos failed to detect.
+CLI  
+[Typer](https://github.com/fastapi/typer), [Rich](https://github.com/Textualize/rich)

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="feat: lower default similarity threshold">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="feat: support python 3.11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/lib.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +172,7 @@
       <workItem from="1768465911199" duration="6579000" />
       <workItem from="1768472845587" duration="11705000" />
       <workItem from="1768613374265" duration="21181000" />
-      <workItem from="1768642441315" duration="313000" />
+      <workItem from="1768642441315" duration="1569000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -503,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768642068774</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="feat: support python 3.11">
+      <option name="closed" value="true" />
+      <created>1768642975124</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1768642975124</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: new icon (test)" />
     <MESSAGE value="build: bump deps and format" />
     <MESSAGE value="docs: larger icon" />
     <MESSAGE value="build: gh workflow" />
@@ -558,7 +564,8 @@
     <MESSAGE value="feat: rich output info" />
     <MESSAGE value="feat: clarify similarity functions" />
     <MESSAGE value="feat: lower default similarity threshold" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: lower default similarity threshold" />
+    <MESSAGE value="feat: support python 3.11" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: support python 3.11" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1766155118074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
