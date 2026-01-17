@@ -5,10 +5,10 @@ import cv2 as cv
 import numba as nb
 import numpy as np
 
-type Image = np.ndarray[tuple[int, int], np.dtype[np.uint8]]
-type Sobel = np.ndarray[tuple[int], np.dtype[np.bool_]]
-type Stack = np.ndarray[tuple[int, int], np.dtype[np.bool_]]
-type DMask = np.ndarray[tuple[int], np.dtype[np.bool_]]
+Image = np.ndarray[tuple[int, int], np.dtype[np.uint8]]
+Sobel = np.ndarray[tuple[int], np.dtype[np.bool]]
+Stack = np.ndarray[tuple[int, int], np.dtype[np.bool]]
+DMask = np.ndarray[tuple[int], np.dtype[np.bool]]
 
 
 def calc_sobel(image: Image) -> Sobel:
