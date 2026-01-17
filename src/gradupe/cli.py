@@ -175,9 +175,9 @@ def scan(
 
     rich.print(table)
 
-    rich.print(f"Sobel resolution = {sobel_res}")
-    rich.print(f"Sobel similarity = {sobel_sim}")
-    rich.print(f"Ratio similarity = {ratio_sim}")
+    rich.print(f"Sobel resolution == {sobel_res}")
+    rich.print(f"Sobel similarity >= {sobel_sim}% (Hamming XOR)")
+    rich.print(f"Ratio similarity >= {ratio_sim}% (Clamped SPD)")
 
     print()
     rich.print(f"Found {num(union, 'duplicate group')} in {num(image_paths, 'image')}")

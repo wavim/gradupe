@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="feat: ratio similarity and union find">
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="feat: rich output info">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
     </list>
@@ -170,7 +170,7 @@
       <workItem from="1768391943186" duration="6491000" />
       <workItem from="1768465911199" duration="6579000" />
       <workItem from="1768472845587" duration="11705000" />
-      <workItem from="1768613374265" duration="19863000" />
+      <workItem from="1768613374265" duration="20523000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -476,7 +476,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768638236266</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="feat: rich output info">
+      <option name="closed" value="true" />
+      <created>1768641276798</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1768641276798</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +514,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chore: downscale icon" />
     <MESSAGE value="docs: update downscaled icon" />
     <MESSAGE value="feat: clearer rich color" />
     <MESSAGE value="feat: new icon (test)" />
@@ -531,7 +538,8 @@
     <MESSAGE value="perf: use iterators over lists" />
     <MESSAGE value="feat: prefer clean recache" />
     <MESSAGE value="feat: ratio similarity and union find" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ratio similarity and union find" />
+    <MESSAGE value="feat: rich output info" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: rich output info" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1766155118074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
