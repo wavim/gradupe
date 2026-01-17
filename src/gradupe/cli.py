@@ -3,9 +3,10 @@ from concurrent.futures import ThreadPoolExecutor
 from os import remove
 from pathlib import Path
 from sqlite3 import PARSE_DECLTYPES, connect, register_adapter
-from typing import Annotated
+from typing import Annotated, Sized
 
 import cv2 as cv
+import numba as nb
 import numpy as np
 from rich.box import SIMPLE
 from rich.console import Console
@@ -28,23 +29,15 @@ rich = Console()
 rich_utils.STYLE_HELPTEXT = ""
 
 
-def generate(sobel_res: int):
-    def comp(path: str):
-        gray = cv.imread(path, cv.IMREAD_GRAYSCALE)
-        y, x = gray.shape
-        grid = cv.resize(gray, (sobel_res, sobel_res))
-
-        return path, x, y, calc_sobel(grid)
-
-    return comp
-
-
 @app.command()
 def init(
     sobel_res: Annotated[
         int, Option("--sobel-res", "-r", help="Sobel resolution", min=1, max=11)
     ] = 10,
 ):
+    """
+    Build the scan cache for incremental scans.
+    """
     try:
         remove(".gradupe")
     except OSError:
@@ -83,6 +76,11 @@ def scan(
         int, Option("--ratio-sim", "-t", help="Ratio similarity", min=1, max=100)
     ] = 95,
 ):
+    """
+    Check the current directory for duplicates.
+    """
+    print()
+
     image_paths = {
         str(path) for path in Path(".").iterdir() if cv.haveImageReader(str(path))
     }
@@ -115,6 +113,9 @@ def scan(
         paths_size = {item[0]: item[1:3] for item in image_items}
         masks = [item[3] for item in image_items]
 
+    rich.print("Numba uses threading layer [bold cyan]" + nb.threading_layer().upper())
+    rich.print("[bold cyan]TBB[/] offers maximum performance")
+
     sobel_dupes = find_dupes(paths_size.keys(), masks, sobel_res, sobel_sim)
 
     def r_valid(dupe):
@@ -127,9 +128,8 @@ def scan(
         return 100 - 100 * abs(a - b) / (a + b) >= ratio_sim
 
     dupes = [dupe for dupe in sobel_dupes if r_valid(dupe)]
-    paths = {path for dupe in dupes for path in dupe}
 
-    i_path = list(paths)
+    i_path = list({path for dupe in dupes for path in dupe})
     path_i = {path: i for i, path in enumerate(i_path)}
 
     n = len(i_path)
@@ -157,9 +157,11 @@ def scan(
         union[find(i)].append(i_path[i])
 
     table = Table(box=SIMPLE)
-    table.add_column("X", style="cyan", no_wrap=True)
-    table.add_column("Y", style="cyan", no_wrap=True)
-    table.add_column("Name", style="red")
+
+    if len(union) != 0:
+        table.add_column("X", style="cyan", no_wrap=True)
+        table.add_column("Y", style="cyan", no_wrap=True)
+        table.add_column("Name", style="red")
 
     for group in sorted(union.values(), key=len, reverse=True):
         group.sort()
@@ -172,3 +174,27 @@ def scan(
         table.add_section()
 
     rich.print(table)
+
+    rich.print(f"Sobel resolution = {sobel_res}")
+    rich.print(f"Sobel similarity = {sobel_sim}")
+    rich.print(f"Ratio similarity = {ratio_sim}")
+
+    print()
+    rich.print(f"Found {num(union, 'duplicate group')} in {num(image_paths, 'image')}")
+
+    print()
+
+
+def generate(sobel_res: int):
+    def comp(path: str):
+        gray = cv.imread(path, cv.IMREAD_GRAYSCALE)
+        y, x = gray.shape
+        grid = cv.resize(gray, (sobel_res, sobel_res))
+
+        return path, x, y, calc_sobel(grid)
+
+    return comp
+
+
+def num(items: Sized, name: str):
+    return f"{len(items)} {name}{'s' if len(items) != 1 else ''}"
