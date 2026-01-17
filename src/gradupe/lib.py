@@ -1,5 +1,5 @@
 from itertools import combinations, compress
-from typing import Iterable, Sequence
+from typing import Iterable, Sequence, cast
 
 import cv2 as cv
 import numba as nb
@@ -16,7 +16,7 @@ def calc_sobel(image: Image) -> Sobel:
 
 
 @nb.njit(nb.bool[:](nb.bool[:, :], nb.uint8), parallel=True, cache=True)
-def calc_dmask(stack: Stack, threshold: int) -> DMask:
+def calc_dmask(stack: Stack, max_dist: int) -> DMask:
     n = len(stack)
     d = np.empty((n - 1) * n // 2, dtype=np.uint8)
 
@@ -26,16 +26,18 @@ def calc_dmask(stack: Stack, threshold: int) -> DMask:
         for j in range(i + 1, n):
             d[t + j] = (stack[i] ^ stack[j]).sum()
 
-    return d < threshold  # type: ignore
+    return d <= max_dist  # type: ignore
 
 
 def find_dupes(
-    paths: Iterable[str], sobels: Sequence[Sobel], side: int, threshold: int
+    paths: Iterable[str], masks: Sequence[Sobel], sobel_res: int, sobel_sim: int
 ) -> Iterable[tuple[str, str]]:
-    if len(sobels) < 2:
+    if len(masks) < 2:
         return []
 
-    stack: Stack = np.stack(sobels)
-    dmask = calc_dmask(stack, 2 * side * side * threshold // 100)
+    stack = cast(Stack, np.stack(masks))
+
+    total = 2 * sobel_res * sobel_res
+    dmask = calc_dmask(stack, (100 - sobel_sim) * total // 100)
 
     return compress(combinations(paths, 2), dmask)

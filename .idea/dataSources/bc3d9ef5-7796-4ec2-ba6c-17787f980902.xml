@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="gradupe">
+<dataSource name="test">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.54">
     <root id="1">
       <ServerVersion>3.51.1</ServerVersion>
@@ -568,7 +568,7 @@
     </routine>
     <schema id="214" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2026-01-14.12:13:14</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-01-15.10:04:12</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="215" parent="14">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1806,26 +1806,55 @@
     <argument id="626" parent="213">
       <Position>1</Position>
     </argument>
-    <table id="627" parent="214" name="sqlite_master">
+    <table id="627" parent="214" name="CACHE"/>
+    <table id="628" parent="214" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="628" parent="627" name="type">
+    <column id="629" parent="627" name="SR">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="630" parent="627" name="IX">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="631" parent="627" name="IY">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="632" parent="627" name="PATH">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <column id="633" parent="627" name="MASK">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>BLOB|0s</StoredType>
+    </column>
+    <index id="634" parent="627" name="SR">
+      <ColNames>SR</ColNames>
+    </index>
+    <column id="635" parent="628" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="629" parent="627" name="name">
+    <column id="636" parent="628" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="630" parent="627" name="tbl_name">
+    <column id="637" parent="628" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="631" parent="627" name="rootpage">
+    <column id="638" parent="628" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="632" parent="627" name="sql">
+    <column id="639" parent="628" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
