@@ -71,10 +71,10 @@ def scan(
     ] = 10,
     sobel_sim: Annotated[
         int, Option("--sobel-sim", "-s", help="Sobel similarity", min=1, max=100)
-    ] = 95,
+    ] = 90,
     ratio_sim: Annotated[
         int, Option("--ratio-sim", "-t", help="Ratio similarity", min=1, max=100)
-    ] = 95,
+    ] = 90,
 ):
     """
     Check the current directory for duplicates.
