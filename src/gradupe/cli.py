@@ -139,7 +139,7 @@ def scan(
         a = x1 * y2
         b = x2 * y1
 
-        return 100 - 100 * abs(a - b) / (a + b) >= ratio_sim
+        return 100 - 200 * abs(a - b) / (a + b) >= ratio_sim
 
     dupes = [dupe for dupe in sobel_dupes if r_valid(dupe)]
 
