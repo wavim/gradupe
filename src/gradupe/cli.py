@@ -34,6 +34,9 @@ def init(
     sobel_res: Annotated[
         int, Option("--sobel-res", "-r", help="Sobel resolution", min=1, max=11)
     ] = 10,
+    recursive: Annotated[
+        bool, Option("--recursive", "-R", help="Recursive search")
+    ] = False,
 ):
     """
     Build the scan cache for incremental scans.
@@ -55,7 +58,9 @@ def init(
         sql.execute("CREATE INDEX SR ON CACHE (SR)")
 
         image_paths = (
-            str(path) for path in Path(".").iterdir() if cv.haveImageReader(str(path))
+            str(path)
+            for path in (Path(".").rglob("*") if recursive else Path(".").iterdir())
+            if path.is_file() and cv.haveImageReader(str(path))
         )
         with ThreadPoolExecutor() as exe:
             cache = exe.map(generate(sobel_res), image_paths)
@@ -75,6 +80,9 @@ def scan(
     ratio_sim: Annotated[
         int, Option("--ratio-sim", "-t", help="Ratio similarity", min=1, max=100)
     ] = 90,
+    recursive: Annotated[
+        bool, Option("--recursive", "-R", help="Recursive search")
+    ] = False,
 ):
     """
     Check the current directory for duplicates.
@@ -82,7 +90,9 @@ def scan(
     print()
 
     image_paths = {
-        str(path) for path in Path(".").iterdir() if cv.haveImageReader(str(path))
+        str(path)
+        for path in (Path(".").rglob("*") if recursive else Path(".").iterdir())
+        if path.is_file() and cv.haveImageReader(str(path))
     }
 
     if Path(".gradupe").exists():

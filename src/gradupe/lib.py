@@ -30,12 +30,12 @@ def calc_dmask(stack: Stack, max_dist: int) -> DMask:
 
 
 def find_dupes(
-    paths: Iterable[str], masks: Sequence[Sobel], sobel_res: int, sobel_sim: int
+    paths: Iterable[str], sobels: Sequence[Sobel], sobel_res: int, sobel_sim: int
 ) -> Iterable[tuple[str, str]]:
-    if len(masks) < 2:
+    if len(sobels) < 2:
         return []
 
-    stack = cast(Stack, np.stack(masks))
+    stack = cast(Stack, np.stack(sobels))
 
     total = 2 * sobel_res * sobel_res
     dmask = calc_dmask(stack, (100 - sobel_sim) * total // 100)
