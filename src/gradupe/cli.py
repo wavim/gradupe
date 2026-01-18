@@ -103,7 +103,8 @@ def scan(
             cache = sql.execute(f"SELECT * FROM CACHE WHERE SR={sobel_res}").fetchall()
             cache_paths = {item[1] for item in cache}
 
-            extra = exe.map(generate(sobel_res), image_paths - cache_paths)
+            extra_it = exe.map(generate(sobel_res), image_paths - cache_paths)
+            extra = list(extra_it)
 
             sql.executemany(
                 f"INSERT INTO CACHE VALUES ({sobel_res}, ?, ?, ?, ?)", extra
@@ -115,20 +116,21 @@ def scan(
         path_size = {item[1]: item[2:4] for item in hit} | {
             item[0]: item[1:3] for item in extra
         }
-        masks = [np.frombuffer(item[4], dtype=np.bool) for item in hit] + [
+        sobels = [np.frombuffer(item[4], dtype=np.bool) for item in hit] + [
             item[3] for item in extra
         ]
     else:
         with ThreadPoolExecutor() as exe:
-            image_items = exe.map(generate(sobel_res), image_paths)
+            items_it = exe.map(generate(sobel_res), image_paths)
+            items = list(items_it)
 
-        path_size = {item[0]: item[1:3] for item in image_items}
-        masks = [item[3] for item in image_items]
+        path_size = {item[0]: item[1:3] for item in items}
+        sobels = [item[3] for item in items]
 
     rich.print("Numba uses threading layer [bold cyan]" + nb.threading_layer().upper())
     rich.print("[bold cyan]TBB[/] offers maximum performance")
 
-    sobel_dupes = find_dupes(path_size.keys(), masks, sobel_res, sobel_sim)
+    sobel_dupes = find_dupes(path_size.keys(), sobels, sobel_res, sobel_sim)
 
     def r_valid(dupe):
         p1, p2 = dupe
