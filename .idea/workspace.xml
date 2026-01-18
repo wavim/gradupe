@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="fix: exhausted iterators">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
-    </list>
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="build: bump dependencies" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,23 +172,7 @@
       <workItem from="1768646185573" duration="457000" />
       <workItem from="1768707424785" duration="1169000" />
       <workItem from="1768713744230" duration="2129000" />
-      <workItem from="1768738970623" duration="677000" />
-    </task>
-    <task id="LOCAL-00001" summary="feat: rework cli with typer">
-      <option name="closed" value="true" />
-      <created>1758028830568</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1758028830568</updated>
-    </task>
-    <task id="LOCAL-00002" summary="chore: update gitignore">
-      <option name="closed" value="true" />
-      <created>1758346823630</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1758346823630</updated>
+      <workItem from="1768738970623" duration="1125000" />
     </task>
     <task id="LOCAL-00003" summary="chore: update gitignore">
       <option name="closed" value="true" />
@@ -571,7 +550,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768715619239</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fix: symmetric pd">
+      <option name="closed" value="true" />
+      <created>1768740039382</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1768740039382</updated>
+    </task>
+    <task id="LOCAL-00051" summary="build: bump dependencies">
+      <option name="closed" value="true" />
+      <created>1768740052721</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1768740052721</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,8 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: try to fix pypi tp" />
-    <MESSAGE value="chore: cleanup project" />
     <MESSAGE value="chore: return repo link + misc" />
     <MESSAGE value="build: ignore tag push" />
     <MESSAGE value="docs: clarify tbb not mandatory + misc" />
@@ -626,7 +619,9 @@
     <MESSAGE value="docs: cache location" />
     <MESSAGE value="feat: recursive search" />
     <MESSAGE value="fix: exhausted iterators" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: exhausted iterators" />
+    <MESSAGE value="fix: symmetric pd" />
+    <MESSAGE value="build: bump dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: bump dependencies" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1766155118074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />
