@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="docs: note on admin privilege">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gradupe/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradupe/cli.py" afterDir="false" />
+    <list default="true" id="3bfc37b5-c785-411e-8190-d5baacfc9746" name="Changes" comment="fix: cache hit path-mask correspondence">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +172,7 @@
       <workItem from="1768613374265" duration="21181000" />
       <workItem from="1768642441315" duration="1569000" />
       <workItem from="1768646185573" duration="457000" />
-      <workItem from="1768707424785" duration="363000" />
+      <workItem from="1768707424785" duration="677000" />
     </task>
     <task id="LOCAL-00001" summary="feat: rework cli with typer">
       <option name="closed" value="true" />
@@ -535,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768646538503</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fix: cache hit path-mask correspondence">
+      <option name="closed" value="true" />
+      <created>1768707939885</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1768707939885</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +572,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: larger icon" />
     <MESSAGE value="build: gh workflow" />
     <MESSAGE value="build: use gh env" />
     <MESSAGE value="build: v2.2.4 trusted" />
@@ -590,7 +596,8 @@
     <MESSAGE value="feat: lower default similarity threshold" />
     <MESSAGE value="feat: support python 3.11" />
     <MESSAGE value="docs: note on admin privilege" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: note on admin privilege" />
+    <MESSAGE value="fix: cache hit path-mask correspondence" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: cache hit path-mask correspondence" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gradupe$cli.coverage" NAME="cli Coverage Results" MODIFIED="1766155118074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gradupe" />

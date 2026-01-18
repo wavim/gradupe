@@ -15,7 +15,8 @@ management.
 available.
 
 For further information and options, refer to `gradupe` and
-`gradupe [command] --help`.
+`gradupe [command] --help`. Cache is stored in the `.gradupe` SQLite database in
+the current directory if enabled.
 
 ### Motive
 
