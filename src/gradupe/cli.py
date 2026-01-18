@@ -100,28 +100,30 @@ def scan(
             )
             sql.commit()
 
-        paths_size = {
-            item[1]: item[2:4] for item in cache if item[1] in image_paths
-        } | {item[0]: item[1:3] for item in extra}
-        masks = [np.frombuffer(item[4], dtype=np.bool) for item in cache] + [
+        hit = [item for item in cache if item[1] in image_paths]
+
+        path_size = {item[1]: item[2:4] for item in hit} | {
+            item[0]: item[1:3] for item in extra
+        }
+        masks = [np.frombuffer(item[4], dtype=np.bool) for item in hit] + [
             item[3] for item in extra
         ]
     else:
         with ThreadPoolExecutor() as exe:
             image_items = exe.map(generate(sobel_res), image_paths)
 
-        paths_size = {item[0]: item[1:3] for item in image_items}
+        path_size = {item[0]: item[1:3] for item in image_items}
         masks = [item[3] for item in image_items]
 
     rich.print("Numba uses threading layer [bold cyan]" + nb.threading_layer().upper())
     rich.print("[bold cyan]TBB[/] offers maximum performance")
 
-    sobel_dupes = find_dupes(paths_size.keys(), masks, sobel_res, sobel_sim)
+    sobel_dupes = find_dupes(path_size.keys(), masks, sobel_res, sobel_sim)
 
     def r_valid(dupe):
         p1, p2 = dupe
-        x1, y1 = paths_size[p1]
-        x2, y2 = paths_size[p2]
+        x1, y1 = path_size[p1]
+        x2, y2 = path_size[p2]
         a = x1 * y2
         b = x2 * y1
 
@@ -165,10 +167,10 @@ def scan(
 
     for group in sorted(union.values(), key=len, reverse=True):
         group.sort()
-        group.sort(key=lambda path: paths_size[path][0] * paths_size[path][1])
+        group.sort(key=lambda path: path_size[path][0] * path_size[path][1])
 
         for path in group:
-            x, y = paths_size[path]
+            x, y = path_size[path]
             table.add_row(str(x), str(y), path)
 
         table.add_section()
